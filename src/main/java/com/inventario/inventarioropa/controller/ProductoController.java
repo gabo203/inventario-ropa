@@ -1,0 +1,23 @@
+package com.inventario.inventarioropa.controller;
+
+import com.inventario.inventarioropa.entity.Producto;
+import com.inventario.inventarioropa.repository.ProductoRepository;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+public class ProductoController {
+
+    private final ProductoRepository productoRepository;
+
+    public ProductoController(ProductoRepository productoRepository) {
+        this.productoRepository = productoRepository;
+    }
+
+    @GetMapping("/productos")
+    public List<Producto> listarProductos() {
+        return productoRepository.findAll();
+    }
+}
